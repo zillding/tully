@@ -22,6 +22,14 @@ class App extends Component {
         <div>
           3001 <button>kill</button>
         </div>
+
+        <style global jsx>{`
+          body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+              Helvetica, Arial, sans-serif, "Apple Color Emoji",
+              "Segoe UI Emoji", "Segoe UI Symbol";
+          }
+        `}</style>
       </div>
     );
   }
