@@ -13,6 +13,13 @@
   "author": "Zill Ding",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^4.0.4"
+    "electron": "^4.0.4",
+    "next": "^8.0.1",
+    "react": "^16.8.2",
+    "react-dom": "^16.8.2"
+  },
+  "dependencies": {
+    "electron-is-dev": "^1.0.1",
+    "electron-next": "^3.1.5"
   }
 }
