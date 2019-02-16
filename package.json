@@ -4,6 +4,7 @@
   "description": "An Electron application",
   "main": "main.js",
   "scripts": {
+    "prettier": "prettier --write '**/*.{js,css,md}'",
     "start": "electron .",
     "build": "next build renderer && next export renderer",
     "dist": "npm run build && build"
@@ -25,6 +26,7 @@
     "electron": "^4.0.4",
     "electron-builder": "^20.38.5",
     "next": "^8.0.1",
+    "prettier": "^1.16.4",
     "react": "^16.8.2",
     "react-dom": "^16.8.2"
   },
