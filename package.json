@@ -4,7 +4,16 @@
   "description": "An Electron application",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build": "next build renderer && next export renderer",
+    "dist": "npm run build && build"
+  },
+  "build": {
+    "files": [
+      "**/*",
+      "!renderer",
+      "renderer/out"
+    ]
   },
   "repository": "github:zillding/tully",
   "keywords": [
@@ -14,6 +23,7 @@
   "license": "MIT",
   "devDependencies": {
     "electron": "^4.0.4",
+    "electron-builder": "^20.38.5",
     "next": "^8.0.1",
     "react": "^16.8.2",
     "react-dom": "^16.8.2"
