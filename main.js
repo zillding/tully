@@ -1,5 +1,4 @@
 // Modules to control application life and create native browser window
-const path = require("path");
 const { app, BrowserWindow } = require("electron");
 const prepareNext = require("electron-next");
 const isDev = require("electron-is-dev");
@@ -20,8 +19,8 @@ function createWindow() {
 
   // and load the index.html of the app.
   const devPath = "http://localhost:8000/start";
-  const prodPath = path.resolve("renderer/out/start/index.html");
-  const entry = isDev ? devPath : `file://${prodPath}`;
+  const prodPath = `file://${__dirname}/renderer/out/start/index.html`;
+  const entry = isDev ? devPath : prodPath;
 
   mainWindow.loadURL(entry);
 
