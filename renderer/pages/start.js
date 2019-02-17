@@ -1,13 +1,7 @@
 import React, { Component } from "react";
-import rangeParser from "parse-numeric-range";
-import tcpPortUsed from "tcp-port-used";
-import kill from "kill-port";
 
 import Main from "../components/Main";
 import Settings from "../components/Settings";
-
-const isPortInUse = port =>
-  tcpPortUsed.check(port, "127.0.0.1").then(inUse => (inUse ? port : 0));
 
 class App extends Component {
   state = {
