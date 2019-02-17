@@ -1,27 +1,61 @@
 import React, { Component } from "react";
+import rangeParser from "parse-numeric-range";
+import tcpPortUsed from "tcp-port-used";
+import kill from "kill-port";
+
+const isPortInUse = port =>
+  tcpPortUsed.check(port, "127.0.0.1").then(inUse => (inUse ? port : 0));
 
 class App extends Component {
   state = {
-    value: "3000,3001"
+    value: "3000-3005,8000-8100,9000-9100",
+    portsInUse: []
   };
+
+  componentDidMount() {
+    this.setPortsInUse();
+  }
 
   onChange = e => {
     this.setState({ value: e.target.value });
   };
 
-  render() {
+  setPortsInUse() {
     const { value } = this.state;
+
+    const ports = rangeParser.parse(value);
+    Promise.all(ports.map(isPortInUse))
+      .then(values => values.filter(v => v > 0))
+      .then(portsInUse => {
+        this.setState({ portsInUse });
+      });
+  }
+
+  render() {
+    const { value, portsInUse } = this.state;
 
     return (
       <div>
         <input value={value} onChange={this.onChange} />
-        <button>refresh</button>
-        <div>
-          3000 <button>kill</button>
-        </div>
-        <div>
-          3001 <button>kill</button>
-        </div>
+        <button
+          onClick={() => {
+            this.setPortsInUse();
+          }}
+        >
+          set
+        </button>
+        {portsInUse.map(port => (
+          <div key={port}>
+            {port}{" "}
+            <button
+              onClick={() => {
+                kill(port);
+              }}
+            >
+              kill
+            </button>
+          </div>
+        ))}
 
         <style global jsx>{`
           body {
