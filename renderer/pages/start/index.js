@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
-import Main from "../components/Main";
-import Settings from "../components/Settings";
+import Main from "./Main";
+import Settings from "./Settings";
 
 class App extends Component {
   state = {
