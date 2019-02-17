@@ -23,7 +23,7 @@
   "author": "Zill Ding",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^4.0.4",
+    "electron": "^4.0.5",
     "electron-builder": "^20.38.5",
     "next": "^8.0.1",
     "prettier": "^1.16.4",
