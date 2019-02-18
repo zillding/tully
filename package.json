@@ -7,7 +7,8 @@
     "prettier": "prettier --write '**/*.{js,css,md}'",
     "start": "electron .",
     "build": "next build renderer && next export renderer",
-    "dist": "npm run build && build"
+    "pack": "electron-builder --dir",
+    "dist": "npm run build && electron-builder"
   },
   "build": {
     "files": [
