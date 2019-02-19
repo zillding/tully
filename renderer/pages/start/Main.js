@@ -8,6 +8,7 @@ const isPortInUse = port =>
 
 class Main extends Component {
   state = {
+    loading: true,
     portsInUse: []
   };
 
@@ -22,12 +23,19 @@ class Main extends Component {
     Promise.all(ports.map(isPortInUse))
       .then(values => values.filter(v => v > 0))
       .then(portsInUse => {
-        this.setState({ portsInUse });
+        this.setState({ loading: false, portsInUse });
+      })
+      .catch(() => {
+        this.setState({ loading: false });
       });
   }
 
   render() {
-    const { portsInUse } = this.state;
+    const { loading, portsInUse } = this.state;
+
+    if (loading) {
+      return <p>loading...</p>;
+    }
 
     return (
       <ul>
