@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import { SettingsIcon, CloseIcon } from "./icons";
+import FloatingButton from "./FloatingButton";
 import Main from "./Main";
 import Settings from "./Settings";
 
@@ -22,15 +24,15 @@ class App extends Component {
           <Settings value={value} onChangeValue={this.onChangeValue} />
         )}
         {!showSettings && <Main value={value} />}
-        <button
+        <FloatingButton
           onClick={() => {
             this.setState(({ showSettings }) => ({
               showSettings: !showSettings
             }));
           }}
         >
-          {showSettings ? "close" : "settings"}
-        </button>
+          {showSettings ? <CloseIcon /> : <SettingsIcon />}
+        </FloatingButton>
         <style jsx>{`
           .root {
             display: flex;
@@ -38,11 +40,6 @@ class App extends Component {
             justify-content: center;
             padding: 10px;
             box-sizing: border-box;
-          }
-          button {
-            position: absolute;
-            top: 10px;
-            right: 10px;
           }
         `}</style>
 
