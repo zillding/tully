@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import rangeParser from "parse-numeric-range";
 import tcpPortUsed from "tcp-port-used";
+import find from "find-process";
+import zip from "lodash/zip";
 
 import KillButton from "./KillButton";
 
@@ -21,10 +23,17 @@ class Main extends Component {
     const { value } = this.props;
 
     const ports = rangeParser.parse(value);
+    let portsArray;
     Promise.all(ports.map(isPortInUse))
       .then(values => values.filter(v => v > 0))
       .then(portsInUse => {
-        this.setState({ loading: false, portsInUse });
+        portsArray = portsInUse;
+        return Promise.all(
+          portsInUse.map(port => find("port", port).then(list => list[0].name))
+        );
+      })
+      .then(names => {
+        this.setState({ loading: false, portsInUse: zip(portsArray, names) });
       })
       .catch(() => {
         this.setState({ loading: false });
@@ -40,9 +49,10 @@ class Main extends Component {
 
     return (
       <ul>
-        {portsInUse.map(port => (
+        {portsInUse.map(([port, name]) => (
           <li key={port}>
-            {port}
+            <span>{name}</span>
+            <span>{port}</span>
             <KillButton port={port} />
           </li>
         ))}
@@ -54,6 +64,9 @@ class Main extends Component {
           li {
             display: flex;
             align-items: center;
+          }
+          span {
+            margin-left: 10px;
           }
         `}</style>
       </ul>
