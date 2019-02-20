@@ -38,7 +38,6 @@ class App extends Component {
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 10px;
             box-sizing: border-box;
           }
         `}</style>

@@ -7,6 +7,7 @@ function Settings({ value, onChangeValue }) {
       <style jsx>{`
         textarea {
           width: 100%;
+          margin: 10px;
         }
       `}</style>
     </Fragment>

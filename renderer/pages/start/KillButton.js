@@ -16,8 +16,8 @@ function KillButton({ port }) {
 
       <style jsx>{`
         button {
-          margin-left: 10px;
-          padding: 5px;
+          margin: 2px 8px;
+          padding: 4px;
           background: none;
           border: none;
           display: flex;

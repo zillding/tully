@@ -55,8 +55,10 @@ class Main extends Component {
 
         <style jsx>{`
           ul {
+            max-height: 300px;
             padding: 0;
-            overflow: hidden;
+            overflow: auto;
+            flex: 1;
           }
         `}</style>
       </ul>

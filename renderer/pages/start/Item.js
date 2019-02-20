@@ -11,16 +11,27 @@ function Item({ name, port }) {
 
       <style jsx>{`
         li {
+          padding: 0 28px;
           display: flex;
           align-items: center;
         }
-        span {
-          margin-left: 10px;
+        li:hover {
+          background-color: #000;
+          color: #fff;
+        }
+        li:not(:last-child) {
+          border-bottom: 1px solid #eee;
+        }
+        span:first-of-type {
+          margin: 4px;
           overflow: hidden;
           text-overflow: ellipsis;
+          flex: 1;
+          text-align: center;
         }
-        span:nth-child(2) {
-          flex-shrink: 0;
+        span:last-of-type {
+          flex: 0 0 52px;
+          text-align: end;
         }
       `}</style>
     </li>
