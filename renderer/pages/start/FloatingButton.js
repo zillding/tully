@@ -18,9 +18,11 @@ function FloatingButton({ children, onClick }) {
           justify-content: center;
           border-radius: 50%;
           outline: none;
+          color: #bbb;
         }
         button:hover {
           background-color: #eee;
+          color: #4c4c4c;
         }
         button:active {
           background-color: #ddd;
