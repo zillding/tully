@@ -60,6 +60,7 @@ class Main extends Component {
         <style jsx>{`
           ul {
             padding: 0;
+            overflow: hidden;
           }
           li {
             display: flex;
@@ -67,6 +68,11 @@ class Main extends Component {
           }
           span {
             margin-left: 10px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          span:nth-child(2) {
+            flex-shrink: 0;
           }
         `}</style>
       </ul>
