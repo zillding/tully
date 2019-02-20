@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import rangeParser from "parse-numeric-range";
 import tcpPortUsed from "tcp-port-used";
-import kill from "kill-port";
+
+import KillButton from "./KillButton";
 
 const isPortInUse = port =>
   tcpPortUsed.check(port, "127.0.0.1").then(inUse => (inUse ? port : 0));
@@ -42,13 +43,7 @@ class Main extends Component {
         {portsInUse.map(port => (
           <li key={port}>
             {port}
-            <button
-              onClick={() => {
-                kill(port);
-              }}
-            >
-              kill
-            </button>
+            <KillButton port={port} />
           </li>
         ))}
 
@@ -59,9 +54,6 @@ class Main extends Component {
           li {
             display: flex;
             align-items: center;
-          }
-          button {
-            margin-left: 10px;
           }
         `}</style>
       </ul>
