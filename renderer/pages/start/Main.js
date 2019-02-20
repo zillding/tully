@@ -4,7 +4,7 @@ import tcpPortUsed from "tcp-port-used";
 import find from "find-process";
 import zip from "lodash/zip";
 
-import KillButton from "./KillButton";
+import Item from "./Item";
 
 const isPortInUse = port =>
   tcpPortUsed.check(port, "127.0.0.1").then(inUse => (inUse ? port : 0));
@@ -50,29 +50,13 @@ class Main extends Component {
     return (
       <ul>
         {portsInUse.map(([port, name]) => (
-          <li key={port}>
-            <span>{name}</span>
-            <span>{port}</span>
-            <KillButton port={port} />
-          </li>
+          <Item key={port} name={name} port={port} />
         ))}
 
         <style jsx>{`
           ul {
             padding: 0;
             overflow: hidden;
-          }
-          li {
-            display: flex;
-            align-items: center;
-          }
-          span {
-            margin-left: 10px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-          }
-          span:nth-child(2) {
-            flex-shrink: 0;
           }
         `}</style>
       </ul>
