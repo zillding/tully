@@ -47,6 +47,10 @@ class Main extends Component {
       return <p>loading...</p>;
     }
 
+    if (!portsInUse.length) {
+      return <p>All watching ports are free.</p>;
+    }
+
     return (
       <ul>
         {portsInUse.map(([port, name]) => (
