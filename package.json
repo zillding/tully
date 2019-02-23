@@ -4,6 +4,7 @@
   "description": "An Electron application",
   "main": "main.js",
   "scripts": {
+    "lint": "eslint --ignore-path .gitignore .",
     "prettier": "prettier --write '**/*.{js,css,md}'",
     "start": "electron .",
     "build": "next build renderer && next export renderer",
@@ -24,8 +25,11 @@
   "author": "Zill Ding",
   "license": "MIT",
   "devDependencies": {
+    "babel-eslint": "^10.0.1",
     "electron": "^4.0.5",
     "electron-builder": "^20.38.5",
+    "eslint": "^5.14.1",
+    "eslint-plugin-react": "^7.12.4",
     "find-process": "^1.2.1",
     "kill-port": "^1.3.2",
     "lodash": "^4.17.11",
