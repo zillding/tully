@@ -5,6 +5,7 @@
   "main": "main.js",
   "scripts": {
     "lint": "eslint --ignore-path .gitignore .",
+    "test": "npm run lint",
     "prettier": "prettier --write '**/*.{js,css,md}'",
     "start": "electron .",
     "build": "next build renderer && next export renderer",
