@@ -55,7 +55,7 @@ function createWindow() {
 }
 
 function createTray() {
-  tray = new Tray("./assets/tray-icon.png");
+  tray = new Tray(`${__dirname}/assets/tray-icon.png`);
 
   tray.on("click", function(_, { x, y }) {
     const { width } = electron.screen.getPrimaryDisplay().workAreaSize;
